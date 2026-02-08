@@ -1,0 +1,41 @@
+https://leetcode.com/problems/combine-two-tables/
+
+# Write your MySQL query statement below
+Select p.firstName, p.lastName, a.city, a.state 
+from Person p Left Join Address as a
+on p.personId = a.personId;
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+https://leetcode.com/problems/employees-earning-more-than-their-managers/
+
+# Write your MySQL query statement below
+Select e1.name as Employee 
+from employee e1 inner join employee e2 
+on e1.managerId = e2.id 
+where e1.salary > e2.salary;
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+https://leetcode.com/problems/not-boring-movies/
+
+# Write your MySQL query statement below
+Select id, movie,description, rating 
+from cinema
+where description != "boring" and id % 2 = 1
+order by rating desc;
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+https://leetcode.com/problems/find-customer-referee/
+
+# Write your MySQL query statement below
+select name 
+from customer
+where referee_id != 2 or referee_id is null;
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
