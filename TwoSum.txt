@@ -1,0 +1,51 @@
+https://leetcode.com/problems/two-sum/
+
+1. brute force approach ->
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        //brute force approach
+        for(var i = 0; i<nums.length; i++){
+            var item = nums[i];   
+            for(var j= i+1; j < nums.length;j++){
+                var item2 = nums[j];
+                var sum = item + item2;
+                
+                if(sum == target ){
+                   return new int[]{i,j} ;
+                }
+            }
+        }
+       return new int[]{};
+    }    
+}
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+
+        // stores number -> index
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        // loop through array
+        for (int i = 0; i < nums.length; i++) {
+
+            int current = nums[i];
+
+            // number needed to reach target
+            int complement = target - current;
+
+            // check if we have already seen this complement
+            if (map.containsKey(complement)) {
+
+                // return indices
+                return new int[] { map.get(complement), i };
+            }
+
+            // store current number with its index
+            map.put(current, i);
+        }
+
+        // problem guarantees one solution
+        return null;
+    }
+}
