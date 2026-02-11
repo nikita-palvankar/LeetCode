@@ -35,7 +35,51 @@ from customer
 where referee_id != 2 or referee_id is null;
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/
+
+# Write your MySQL query statement below
+select customer_number
+from orders
+group by customer_number
+order by count(*) desc
+limit 1;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/classes-with-at-least-5-students/
+
+# Write your MySQL query statement below
+select class
+from courses
+group by class
+having count(*) >= 5;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/monthly-transactions-i/
+
+# Write your MySQL query statement below
+Select 
+ DATE_FORMAT(trans_date, '%Y-%m') as month,
+ country,
+ count(*) as trans_count,
+ sum(state = 'approved') as approved_count,
+ sum(amount) as trans_total_amount,
+ sum(case when state = 'approved' then amount else 0 end) as approved_total_amount
+from Transactions
+group by month, country;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/user-activity-for-the-past-30-days-i/
+
+# Write your MySQL query statement below
+Select activity_date as day, count(distinct user_id) as active_users
+from Activity
+where activity_date between '2019-06-28' and '2019-07-27'
+group by activity_date;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 
+-------------------------------------------------------------------------------------------------------------------------------------------
 
-----------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------
