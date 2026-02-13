@@ -1,0 +1,80 @@
+1] Basic if else approach using  JAVA ->
+
+import java.util.*;
+
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> result = new ArrayList<>();
+
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                result.add("FizzBuzz");
+            } 
+            else if (i % 3 == 0) {
+                result.add("Fizz");
+            } 
+            else if (i % 5 == 0) {
+                result.add("Buzz");
+            } 
+            else {
+                result.add(String.valueOf(i));
+            }
+        }
+
+        return result;
+    }
+}
+
+
+1]  Basic if else approach using C#  ->
+
+using System;
+using System.Collections.Generic;
+
+public class Solution {
+    public IList<string> FizzBuzz(int n) {
+        List<string> result = new List<string>();
+
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0 && i % 5 == 0)
+                result.Add("FizzBuzz");
+            else if (i % 3 == 0)
+                result.Add("Fizz");
+            else if (i % 5 == 0)
+                result.Add("Buzz");
+            else
+                result.Add(i.ToString());
+        }
+
+        return result;
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2] Using Ternary Operator  JAVA CODE ->
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> lst = new ArrayList<>();
+        for(int i=1; i<=n; i++){
+
+           String ans = 
+           ((i%3==0)&&(i%5==0)) ? "FizzBuzz" 
+           : (i%3==0) ? "Fizz" 
+           : (i%5==0) ? "Buzz" 
+           : String.valueOf(i);
+           lst.add(ans);
+        }
+        return lst;
+    }
+}
+
+
+2] Using Ternary Operator  C# CODE  ->
+
+string ans =
+    (i % 15 == 0) ? "FizzBuzz" :
+    (i % 3 == 0) ? "Fizz" :
+    (i % 5 == 0) ? "Buzz" :
+    i.ToString();
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
