@@ -42,7 +42,10 @@ class Solution {
 
 
 ===============================================================================================================
+
+
 Optimized Version (with integer square root via binary search) =>
+
 class Solution {
     public int countTriples(int n) {
         int count = 0; 
