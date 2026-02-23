@@ -1,0 +1,92 @@
+https://leetcode.com/problems/add-two-numbers/
+
+1] Brute force approach =>
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        long num1 = 0, num2 = 0, place = 1;
+
+        // convert l1 to number
+        while(l1 != null){
+            num1 += l1.val * place;
+            place *= 10;
+            l1 = l1.next;
+        }
+        place = 1;
+        //convert l2 to number
+        while(l2 != null){
+            num2 += l2.val * place;
+            place *= 10;
+            l2 = l2.next;
+        }
+
+        long sum = num1 + num2;
+        if(sum == 0)
+            return new ListNode(0);
+
+        //convert sum to linkedList
+        ListNode temp = new ListNode(0);
+        ListNode current = temp;
+
+        while(sum > 0){
+            current.next = new ListNode((int)(sum % 10));
+            sum /= 10;
+            current = current.next;
+        }
+
+        return temp.next;
+    }
+}
+
+Wrong Answer 1566 / 1569 testcases passed 
+
+Input 
+l1 = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1] 
+l2 = [5,6,4] 
+Output [2,8,0,4,6,2,5,0,3,0,7,2,4,4,9,6,7,0,5] 
+Expected [6,6,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+
+
+EXPLAINATION ->
+
+
+long can store up to:
+
+9,223,372,036,854,775,807
+
+That’s 19 digits max.
+
+But This Test Case
+l1 =
+[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+
+Count digits.
+
+That’s 31 digits.
+
+overflow happens.
+
+When overflow happens:
+Java does NOT give error.
+It wraps around into garbage value.
+
+
+brute force fails because:
+
+❌ long cannot store 31-digit number
+❌ overflow happens
+❌ result becomes garbage
+
+
+
