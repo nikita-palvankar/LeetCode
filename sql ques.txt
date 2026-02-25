@@ -88,7 +88,13 @@ group by st.student_id, st.student_name, s.subject_name
 order by student_id, subject_name;
 
 -------------------------------------------------------------------------------------------------------------------------------------------
+https://leetcode.com/problems/customers-who-bought-all-products/
 
+# Write your MySQL query statement below
+SELECT customer_id 
+from Customer 
+group by customer_id
+having count(distinct product_key) = (select count(*) from Product);
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------
