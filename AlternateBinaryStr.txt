@@ -1,0 +1,86 @@
+1758 :
+
+https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/
+
+1] With two counters approach java solution =>
+
+class Solution {
+    public int minOperations(String s) {
+        
+        int count1 = 0;
+        int count2 = 0;
+
+        //if character is not what we expect → increase count
+        for(int i = 0; i<s.length(); i++){
+            char c = s.charAt(i);
+            // For pattern1 = 010101..
+            if(i%2==0){
+                if(c != '0')
+                    count1++;
+            }else{
+                if(c != '1')
+                    count1++;
+            }
+
+            // For pattern2 = 10101..
+            if(i%2==0){
+                if(c != '1')
+                    count2++;
+            }else{
+                if(c != '0')
+                    count2++;
+            }
+
+        }
+        return Math.min(count1, count2);
+    }
+}
+
+------------------------------
+
+2] With one counter optimised approach java solution =>
+
+/*
+            Pattern A matches = count
+            Pattern A flips = n - count
+            Pattern B flips = count
+            Answer = min(count , n-count)
+        */
+
+class Solution {
+    public int minOperations(String s) {
+        
+        //p1 = 0101.. p2 = 1010.. ans=> min filp for p1 or p2
+        int count =0;
+        for(int i =0; i <s.length(); i++){
+            //s.charAt(i) - '0' -> Characters are stored as ASCII. So it converts character → number.
+            //i%2 -> for p1: value = i%2 and for p2: oppposite
+            //it checks: Is the current digit equal to i%2 ? 
+            if((s.charAt(i) - '0') == i%2){
+                count++;
+            }
+        }
+        return Math.min(count, s.length() - count);
+    }
+
+--------------------------- OR  ---------------------------
+
+class Solution {
+    public int minOperations(String s) {
+        int count = 0;
+        
+        for (int i = 0; i < s.length(); i++) {
+            if (i % 2 == 0) {
+                if (s.charAt(i) == '1') {
+                    count++;
+                }
+            } else {
+                if (s.charAt(i) == '0') {
+                    count++;
+                }
+            }
+        }
+        
+        return Math.min(count, s.length() - count);
+    }
+}
