@@ -1,8 +1,6 @@
 https://leetcode.com/problems/add-two-numbers/
 
 1] Brute force approach =>
-
-
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -13,6 +11,7 @@ https://leetcode.com/problems/add-two-numbers/
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         long num1 = 0, num2 = 0, place = 1;
@@ -48,7 +47,7 @@ class Solution {
         return temp.next;
     }
 }
-
+---------------------
 Wrong Answer 1566 / 1569 testcases passed 
 
 Input 
@@ -59,31 +58,23 @@ Expected [6,6,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
 
 
 EXPLAINATION ->
-
-
 long can store up to:
 
 9,223,372,036,854,775,807
 
 That’s 19 digits max.
-
 But This Test Case
-l1 =
-[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+l1 = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
 
 Count digits.
-
 That’s 31 digits.
-
 overflow happens.
 
 When overflow happens:
 Java does NOT give error.
 It wraps around into garbage value.
 
-
 brute force fails because:
-
 ❌ long cannot store 31-digit number
 ❌ overflow happens
 ❌ result becomes garbage
