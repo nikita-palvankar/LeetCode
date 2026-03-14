@@ -25,7 +25,7 @@ Follow up: Could you solve it without converting the integer to a string?
 
 
 
-** isPalindrome SOLUTION ** 
+*** isPalindrome SOLUTION *** 
 
 class Solution {
     public boolean isPalindrome(int x) {
@@ -43,8 +43,10 @@ class Solution {
     }
 }
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
+
 half-reversal optimization approach =>
+
 Instead of reversing the entire number, reverse only half of the digits and compare . This avoids integer overflow and is slightly more efficient
 
 
