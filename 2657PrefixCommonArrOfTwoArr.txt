@@ -1,5 +1,18 @@
 https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/
 
+FULL FLOW IS ==>
+for each i
+    if A[i] == B[i]
+        count++
+    else
+        if setB contains A[i]
+            count++
+        if setA contains B[i]
+            count++
+    add A[i] into setA
+    add B[i] into setB
+    ans[i] = count
+-------------------------------------------------------
 JAVA =>
 
 OPTIMISED SOLUTION :
@@ -34,10 +47,64 @@ class Solution {
 
 ANOTHER APPROACH =>
 
+class Solution {
+    public int[] findThePrefixCommonArray(int[] A, int[] B) {
+        int n = A.length;
+        int[] freq = new int[n + 1];
+        int[] ans = new int[n];
+        int count = 0;
 
-
-
+        for(int i = 0; i < n; i++) {
+            if(++freq[A[i]] == 2) {
+                count++;
+            }
+            if(++freq[B[i]] == 2) {
+                count++;
+            }
+            ans[i] = count;
+        }
+        return ans;
+    }
+}
 =======================================================================
 
 C# =>
+using System.Collections.Generic;
 
+public class Solution
+{
+    public int[] FindThePrefixCommonArray(int[] A, int[] B)
+    {
+        HashSet<int> setA = new HashSet<int>();
+        HashSet<int> setB = new HashSet<int>();
+        int n = A.Length;
+        int[] ans = new int[n];
+        int count = 0;
+        for(int i = 0; i < n; i++)
+        {
+            // Same element in both arrays
+            if(A[i] == B[i])
+            {
+                count++;
+            }
+            else
+            {
+                // A[i] already appeared in B prefix
+                if(setB.Contains(A[i]))
+                {
+                    count++;
+                }
+                // B[i] already appeared in A prefix
+                if(setA.Contains(B[i]))
+                {
+                    count++;
+                }
+            }
+            // Add current elements
+            setA.Add(A[i]);
+            setB.Add(B[i]);
+            ans[i] = count;
+        }
+        return ans;
+    }
+}
