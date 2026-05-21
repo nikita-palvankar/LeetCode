@@ -40,7 +40,52 @@ class Solution {
 
 C#  =>
 
+using System;
+using System.Collections.Generic;
 
+public class Solution {
+    
+    public int LongestCommonPrefix(int[] arr1, int[] arr2) {
+        
+        HashSet<int> set = new HashSet<int>();
+
+        // Store all prefixes from arr1
+        foreach(int num in arr1)
+        {
+            int temp = num;
+
+            while(temp > 0)
+            {
+                set.Add(temp);
+                temp = temp / 10;
+            }
+        }
+
+        int max = 0;
+
+        // Check prefixes from arr2
+        foreach(int num in arr2)
+        {
+            int temp = num;
+
+            while(temp > 0)
+            {
+                if(set.Contains(temp))
+                {
+                    int length = temp.ToString().Length;
+
+                    max = Math.Max(max, length);
+
+                    break; // first match is longest
+                }
+
+                temp = temp / 10;
+            }
+        }
+
+        return max;
+    }
+}
 
 
 
