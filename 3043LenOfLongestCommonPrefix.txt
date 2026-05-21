@@ -1,0 +1,46 @@
+https://leetcode.com/problems/find-the-length-of-the-longest-common-prefix/
+
+JAVA => 
+
+OPTIMISED SOLUTION ->
+
+class Solution {
+    public int longestCommonPrefix(int[] arr1, int[] arr2) {
+        //create hashset
+        HashSet<Integer> set = new HashSet<>();
+        //traverse arr1
+        for(int num: arr1){
+            //generate prefixes
+            while(num > 0){
+                set.add(num);
+                num /= 10;
+            }
+        }
+        //traverse arr2
+        int max = 0;
+        for(int num: arr2){
+            //generate prefixes
+            while(num > 0){
+                if(set.contains(num)){
+                    // if prefix exists find length
+                    int length = String.valueOf(num).length();
+                    // then find max length 
+                    max = Math.max(max, length);
+                    break;
+                }
+                num /= 10;
+            }
+        }
+
+        return max;
+    }
+}
+
+=======================================================================
+
+C#  =>
+
+
+
+
+
