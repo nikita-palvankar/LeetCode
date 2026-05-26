@@ -2,6 +2,8 @@ https://leetcode.com/problems/count-the-number-of-special-characters-i/
 
 JAVA =>
 
+1. HashSet Approach 🟢 (Easy & Clean) ->
+
 class Solution {
     public int numberOfSpecialChars(String word) {
         HashSet<Character> set = new HashSet<>();  
@@ -21,7 +23,7 @@ class Solution {
 }
 ---------------------------------------------------------------------------------------------------
 
-OPTIMISED SOLUTION ->
+2. Boolean Array Approach ✅ OPTIMIZED SOLUTION ->
 
 class Solution {
     public int numberOfSpecialChars(String word) {
@@ -54,3 +56,60 @@ class Solution {
 }
 
 =======================================================================
+
+1. HashSet Approach 🟢 (Easy & Clean) ->
+
+class Solution 
+{
+    public int NumberOfSpecialChars(string word) 
+    {
+        HashSet<char> set = new HashSet<char>();
+
+        foreach(char ch in word)
+        {
+            set.Add(ch);
+        }
+
+        int count = 0;
+
+        for(char ch = 'a'; ch <= 'z'; ch++)
+        {
+            if(set.Contains(ch) && set.Contains(char.ToUpper(ch)))
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
+---------------------------------------------------------------------------------------------------
+2. Boolean Array Approach ✅ (Optimized) ->
+
+
+class Solution 
+{
+    public int NumberOfSpecialChars(string word) 
+    {
+        bool[] lower = new bool[26];
+        bool[] upper = new bool[26];
+
+        foreach(char ch in word)
+        {
+            if(char.IsLower(ch))
+                lower[ch - 'a'] = true;
+            else
+                upper[ch - 'A'] = true;
+        }
+
+        int count = 0;
+
+        for(int i = 0; i < 26; i++)
+        {
+            if(lower[i] && upper[i])
+                count++;
+        }
+
+        return count;
+    }
+}
